@@ -1,0 +1,16 @@
+.main{
+    display: flex;
+    flex-direction:column;
+
+    .navigator{
+
+    }
+    .task-management{
+        justify-content: center;
+        align-items: center;
+        margin: 2% 10% 0 10%;
+    }
+}
+.diaul-up{
+   width: 100%;
+}

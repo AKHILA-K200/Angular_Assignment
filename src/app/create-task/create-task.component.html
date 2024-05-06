@@ -1,0 +1,54 @@
+
+
+  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <h3 class="px-4  pt-5 ">Create Task</h3>
+           
+            <div class="bg-white px-4 pb-4 pt-4  ">
+
+                <form [formGroup]="taskCreation" class="form" class="flex" style="flex-direction: column;">
+                    <div class="mb-6">
+                        <label for="task-title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Task Title</label>
+                        <input formControlName="title" type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+                        <div class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="taskTitleControl.invalid && taskTitleControl.touched"> Please Enter a Valid Task Title.</div>
+                      </div>
+                      <div class="mb-6">
+                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        <textarea formControlName="description" id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Describe the task..."></textarea>
+                    
+                      </div>
+                      <div class="flex mb-6 " style="gap: 20px;">
+                        <div class="flex items-center">
+                            <input name="status" id="default-radio-1" type="radio" [value]='true'  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                   formControlName="status">
+                            <label for="default-radio-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Complete</label>
+                          </div>
+                          <div class="flex items-center">
+                            <input name="status" id="default-radio-2" type="radio" [value]='false' class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            formControlName="status">
+                            <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
+                          </div>
+                          
+                        <div class="mt-2 text-sm text-red-600 dark:text-red-500" *ngIf="taskStatusControl.invalid && taskTitleControl.touched"> Please Enter a Valid Task Title.</div>
+                    </div>
+                    
+                    
+                      <div class="flex" style="flex-direction: row;align-self: flex-end; margin-top: 5%;" >
+                        <button type="button" (click)="cancel()" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cancel</button>
+                        <button type="button" (click)="submit()"  class="focus:outline-none text-white bg-gray-800 hover:bg-gray-800 focus:ring-4 focus:bg-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:bg-gray-600 ">Save Changes</button>
+
+                    </div>
+                </form>
+
+         
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

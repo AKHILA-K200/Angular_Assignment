@@ -6,11 +6,12 @@ import { TaskManagementComponent } from './task-management/task-management.compo
 import { DialupComponent } from './dialup/dialup.component';
 import { TaskManagementService } from '../shared';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,NavigatorComponent,TaskManagementComponent,DialupComponent],
+  imports: [CommonModule, RouterOutlet,NavigatorComponent,TaskManagementComponent,DialupComponent,ToastMessageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -19,10 +20,8 @@ export class AppComponent {
   constructor(private taskManagementService:TaskManagementService){
 
   }
-  ngOnInit(){
-    console.log("set task");
-    
-    this.taskManagementService.setTaskList();
+  ngOnInit(){      
+      this.taskManagementService.setTaskList();
   }
  
 }

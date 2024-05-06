@@ -9,6 +9,7 @@
         padding: 10px;
         border-radius: 8px;
         flex-wrap: wrap;
+        cursor: pointer;
         .create-task-font-style{
             display: flex;
             gap: 5px;
@@ -21,5 +22,8 @@
      .options{
          display: flex;
          gap: 2%;
+     }
+     .task-status{
+        cursor: pointer;
      }
 }

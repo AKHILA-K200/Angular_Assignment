@@ -13,45 +13,58 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class CreateTaskComponent {
 @Output() statusOfDialUpBox=new EventEmitter<boolean>()   
- 
+public ids: string[] = [];
+
 constructor(private formBuilder:FormBuilder,private taskManagementService: TaskManagementService){}
-taskCreation = this.formBuilder.group({
-  id:new FormControl([this.generate(),Validators.required]),
+taskCreation = this.formBuilder.group<taskManagement.taskCreateForm>({
+  id:new FormControl(this.generate(),[Validators.required]),
   title: new FormControl('', [Validators.required]),
   description:new FormControl('') ,
   status:new FormControl(true)
 });
 
-ngOnInit(){
-}
+ngOnInit(){  }
 generate(): string {
   let isUnique = false;
   let tempId = '';
 
   while (!isUnique) {
     tempId = this.generator();
+    if (!this.idExists(tempId)) {
+      isUnique = true;
+      this.ids.push(tempId);
     }
+  }
 
   return tempId;
 }
 
+ remove(id: string): void {
+  const index = this.ids.indexOf(id);
+  this.ids.splice(index, 1);
+}
 
-private generator(): string {
+ generator(): string {
   const isString = `${this.S4()}${this.S4()}-${this.S4()}-${this.S4()}-${this.S4()}-${this.S4()}${this.S4()}${this.S4()}`;
 
   return isString;
 }
 
+ idExists(id: string): boolean {
+  return this.ids.includes(id);
+}
 
-private S4(): string {
+ S4(): string {
   return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
 
 submit(){
-  
-  console.log(this.taskCreation.value);
-  this.taskManagementService.appendTask(this.taskCreation.value);
-  this.statusOfDialUpBox.emit(true);
+  this.taskCreation.markAllAsTouched();
+  if(this.taskCreation.valid){
+    this.taskManagementService.appendTask(this.taskCreation.value);
+    this.statusOfDialUpBox.emit(true);
+  }
+
 }
 cancel(){
   this.statusOfDialUpBox.emit(true);

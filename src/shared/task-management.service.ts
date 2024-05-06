@@ -29,9 +29,6 @@ export class TaskManagementService {
   constructor() { }
 
   setTaskList(){
-    console.log("hello");
-    console.log(this.taskList);
-    
     localStorage.setItem("taskList", JSON.stringify(this.taskList) )
   }
   appendTask(task:any){
@@ -39,4 +36,24 @@ export class TaskManagementService {
    this.setTaskList();
   
   }
+  deletTask(taskId:string){
+
+   this.removeTaskById(taskId)
+   this.setTaskList()
+  }
+
+  removeTaskById(id: string): void {
+    const index = this.taskList.findIndex(task => task.id === id);
+        if (index !== -1) {
+      this.taskList.splice(index, 1);
+    }
+  }
+  updatetaskStatus(taskId:string){
+this.taskList.filter((task) =>{
+ if(task.id === taskId) 
+  task.status=!task.status;   
+});
+this.setTaskList()
+  }
+  
 }

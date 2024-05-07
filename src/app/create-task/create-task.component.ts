@@ -61,7 +61,13 @@ generate(): string {
 submit(){
   this.taskCreation.markAllAsTouched();
   if(this.taskCreation.valid){
-    this.taskManagementService.appendTask(this.taskCreation.value);
+    let payload :taskManagement.taskCreate={
+     id:  this.taskCreation.value.id!,
+     title:this.taskCreation.value.title!,
+     description:this.taskCreation.value.description!,
+     status:this.taskCreation.value.status!
+    }
+    this.taskManagementService.appendTask(payload);
     this.statusOfDialUpBox.emit(true);
   }
 

@@ -31,7 +31,7 @@ export class TaskManagementService {
   setTaskList(){
     localStorage.setItem("taskList", JSON.stringify(this.taskList) )
   }
-  appendTask(task:any){
+  appendTask(task:taskManagement.taskCreate){
    this.taskList.push(task);
    this.setTaskList();
   

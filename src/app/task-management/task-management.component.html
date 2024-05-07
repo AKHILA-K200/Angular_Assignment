@@ -41,9 +41,10 @@
 <ng-container *ngIf="createTask"> 
   <app-create-task (statusOfDialUpBox)="closeDialUpBox($event)" ></app-create-task>
  </ng-container>
-<ng-container *ngIf="displayToast">
+ <ng-container *ngIf="displayToast" [@fadeInAnimation] class="toast-container">
   <app-toast-message [toastMessage]="toastMessage" [toastTitle]="toastTitle"></app-toast-message>
 </ng-container>
+
 <ng-container *ngIf="displayConfirmation">
   <app-dialup (confirmationStatus)="confirmDelete($event)" [confrimationMessage]="confirmationMessage"></app-dialup>
 </ng-container>

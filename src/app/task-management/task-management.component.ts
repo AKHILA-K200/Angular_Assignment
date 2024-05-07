@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 import { DialupComponent } from '../dialup/dialup.component';
 import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-task-management',
@@ -29,13 +30,25 @@ export class TaskManagementComponent {
   }
   actionTobePerformed=''
 
-
+    fadeInAnimation = trigger('fadeInAnimation', [
+    transition(':enter', [
+      style({ opacity: 0 }),
+      animate('300ms', style({ opacity: 1 })),
+    ]),
+    transition(':leave', [
+      animate('300ms', style({ opacity: 0 })),
+    ]),
+  ]);
    ngOnInit(){
     if(localStorage.getItem("taskList")){
       this.taskList= JSON.parse(localStorage.getItem("taskList")!) 
     }
   }
    closeDialUpBox(event : boolean){
+    if(event){
+      this.toastMessage='Task created successfully';
+      this.toastTitle='SUCCESS'
+    }
     this.createTask=false
     this.getTaskList();
    }

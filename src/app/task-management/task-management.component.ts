@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { CreateTaskComponent } from '../create-task/create-task.component';
 import { DialupComponent } from '../dialup/dialup.component';
 import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-task-management',
@@ -30,15 +29,6 @@ export class TaskManagementComponent {
   }
   actionTobePerformed=''
 
-    fadeInAnimation = trigger('fadeInAnimation', [
-    transition(':enter', [
-      style({ opacity: 0 }),
-      animate('300ms', style({ opacity: 1 })),
-    ]),
-    transition(':leave', [
-      animate('300ms', style({ opacity: 0 })),
-    ]),
-  ]);
    ngOnInit(){
     if(localStorage.getItem("taskList")){
       this.taskList= JSON.parse(localStorage.getItem("taskList")!) 
@@ -74,24 +64,24 @@ export class TaskManagementComponent {
     this.displayConfirmation=true;  
     this.actionTobePerformed=action
    }
-   confirmDelete(event:boolean){
-   if(event){
+   confirmDelete(event:boolean){    
+   if(event){    
     switch(this.actionTobePerformed){
       case 'delete': this.taskManagementService.deletTask(this.selectedTask.id);
                     this.displayToast=true;
                     this.toastMessage='Deletion Successful';
                     this.toastTitle='ERROR'
-                    this.getTaskList()
                     break;
       case 'update': this.taskManagementService.updatetaskStatus(this.selectedTask.id);
                     this.displayToast=true
                     this.toastMessage='Update Successful';
                     this.toastTitle='SUCCESS'
-                    this.getTaskList()
                     break;
     }
    
    }
+   this.getTaskList()
+
    this.displayConfirmation=false;
 
    setTimeout(() => {

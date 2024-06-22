@@ -41,7 +41,7 @@ export class TaskManagementService {
    this.removeTaskById(taskId)
    this.setTaskList()
   }
-
+ 
   removeTaskById(id: string): void {
     const index = this.taskList.findIndex(task => task.id === id);
         if (index !== -1) {

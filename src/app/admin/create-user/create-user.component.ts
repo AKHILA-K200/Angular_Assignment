@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, output } from '@angular/core';
-import { taskManagement, TaskManagementService } from '../../shared';
+import { taskManagement,TaskManagementService } from '../../../shared';
 import { FormBuilder, FormControl, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,10 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   selector: 'app-create-task',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule,FormsModule],
-  templateUrl: './create-task.component.html',
-  styleUrl: './create-task.component.scss'
+  templateUrl: './create-user.component.html',
+  styleUrl: './create-user.component.scss'
 })
-export class CreateTaskComponent {
+export class CreateUserComponent {
 @Output() statusOfDialUpBox=new EventEmitter<boolean>()   
 public ids: string[] = [];
 

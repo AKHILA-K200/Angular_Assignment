@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, input, Output, output } from '@angular/core';
-import { CreateTaskComponent } from '../create-task/create-task.component';
+import { CreateUserComponent } from '../create-user/create-user.component';
 
 @Component({
   selector: 'app-dialup',
   standalone: true,
-  imports: [CreateTaskComponent],
+  imports: [CreateUserComponent],
   templateUrl: './dialup.component.html',
   styleUrl: './dialup.component.scss'
 })

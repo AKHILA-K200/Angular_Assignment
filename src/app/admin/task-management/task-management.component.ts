@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { taskManagement, TaskManagementService } from '../../shared';
+import { taskManagement, TaskManagementService } from '../../../shared';
 import { CommonModule } from '@angular/common';
-import { CreateTaskComponent } from '../create-task/create-task.component';
+import { CreateUserComponent } from '../create-user/create-user.component';
 import { DialupComponent } from '../dialup/dialup.component';
-import { ToastMessageComponent } from '../../shared/toast-message/toast-message.component';
+import { ToastMessageComponent } from '../../../shared/toast-message/toast-message.component';
 
 @Component({
   selector: 'app-task-management',
   standalone: true,
-  imports: [CommonModule,CreateTaskComponent,DialupComponent,ToastMessageComponent],
+  imports: [CommonModule,CreateUserComponent,DialupComponent,ToastMessageComponent],
   templateUrl: './task-management.component.html',
   styleUrl: './task-management.component.scss'
 })

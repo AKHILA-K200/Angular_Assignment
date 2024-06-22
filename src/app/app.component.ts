@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NavigatorComponent } from './navigator/navigator.component';
-import { TaskManagementComponent } from './task-management/task-management.component';
-import { DialupComponent } from './dialup/dialup.component';
+import { TaskManagementComponent } from './admin/task-management/task-management.component';
+import { DialupComponent } from './admin/dialup/dialup.component';
 import { TaskManagementService } from '../shared';
-import { CreateTaskComponent } from './create-task/create-task.component';
+import { CreateUserComponent } from './admin/create-user/create-user.component';
 import { ToastMessageComponent } from '../shared/toast-message/toast-message.component';
 
 @Component({
